@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Playlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <list>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Kick Ass 2 2013 MULTI 1080p BluRay DTS x264-DMT.mkv</content_path>
+      <content_name>Kick Ass 2 2013 MULTI 1080p BluRay DTS x264-DMT</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Fiston.2014.french.DVDRip.x264.AC3-SVR.mkv</content_path>
+      <content_name>Fiston.2014.french.DVDRip.x264.AC3-SVR</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\The.Internship.2013.UNRATED.FRENCH.SUBFORCED.BRRip.x264.AC3-FUNKY.mkv</content_path>
+      <content_name>The.Internship.2013.UNRATED.FRENCH.SUBFORCED.BRRip.x264.AC3-FUNKY</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Downloads\COME-ON-NOW--MORE-MARGARITAS.mp3</content_path>
+      <content_name>COME-ON-NOW--MORE-MARGARITAS</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\SERIE\Breaking Bad Season 4\4x02 - Thirty-Eight Snub.avi</content_path>
+      <content_name>4x02 - Thirty-Eight Snub</content_name>
+    </MediaContent>
+  </list>
+  <name>toto.xml</name>
+</Playlist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Playlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <list>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-100.jpg</content_path>
+      <content_name>wallhaven-100</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-5138.jpg</content_path>
+      <content_name>wallhaven-5138</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-8888.jpg</content_path>
+      <content_name>wallhaven-8888</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-9294.jpg</content_path>
+      <content_name>wallhaven-9294</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-28998.jpg</content_path>
+      <content_name>wallhaven-28998</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Pictures\wallhaven-79573.jpg</content_path>
+      <content_name>wallhaven-79573</content_name>
+    </MediaContent>
+  </list>
+  <name>Image.xml</name>
+</Playlist>

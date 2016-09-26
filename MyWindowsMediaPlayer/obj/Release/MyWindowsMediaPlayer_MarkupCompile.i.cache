@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\PROJECT\MyWindowsMediaPlayer-MVVM\MyWindowsMediaPlayer\obj\Release\
+F:\MyWindowsMediaPlayer\MyWindowsMediaPlayer-MVVM\MyWindowsMediaPlayer\obj\Release\
 MyWindowsMediaPlayer
 none
 false
 TRACE
-F:\PROJECT\MyWindowsMediaPlayer-MVVM\MyWindowsMediaPlayer\App.xaml
-3-873576280
+F:\MyWindowsMediaPlayer\MyWindowsMediaPlayer-MVVM\MyWindowsMediaPlayer\App.xaml
+5-1375626525
 
-151330012515
-12-1401562060
-MainWindow.xaml;View\ControlView.xaml;View\ScreenView.xaml;
+201536866795
+14494498449
+MainWindow.xaml;View\ControlView.xaml;View\ExplorerView.xaml;View\PlaylistView.xaml;View\ScreenView.xaml;
 
-True
+False
 

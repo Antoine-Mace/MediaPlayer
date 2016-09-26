@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Playlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <list>
+    <MediaContent>
+      <content_path>F:\Video\FILM\insidious.chapter.2.2013.DUAL.1080p.BluRay.x264-XCON.mkv</content_path>
+      <content_name>insidious.chapter.2.2013.DUAL.1080p.BluRay.x264-XCON</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>C:\Users\Swysbad\Downloads\COME-ON-NOW--MORE-MARGARITAS.mp3</content_path>
+      <content_name>COME-ON-NOW--MORE-MARGARITAS</content_name>
+    </MediaContent>
+  </list>
+  <name>Film.xml</name>
+</Playlist>

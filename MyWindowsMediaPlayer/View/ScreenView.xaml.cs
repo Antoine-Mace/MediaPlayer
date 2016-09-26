@@ -16,128 +16,153 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace MyWindowsMediaPlayer.View
 {
-    /// <summary>
-    /// Logique d'interaction pour ScreenView.xaml
-    /// </summary>
     public partial class ScreenView : UserControl
     {
-        private String mediaPath = "";
-        private String[] files;
-        private int mediaTime;
-        private int mediaActualPos;
-        private int mediaActualFile;
+        private Boolean mediaPlayerIsPlaying = false;
+        private Boolean userIsDraggingSlider = false;
+        private Boolean isFullscreen = false;
+        private DispatcherTimer timer = new DispatcherTimer();
 
         public ScreenView()
         {
             InitializeComponent();
-            mediaActualFile = 0;
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+            timeSlider.Value = 0;
+            timeSlider.Maximum = 0;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if ((media.Source != null) && (media.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
+            {
+                timeSlider.Minimum = 0;
+                timeSlider.Maximum = media.NaturalDuration.TimeSpan.TotalSeconds;
+                timeSlider.Value = media.Position.TotalSeconds;
+            }
         }
 
         internal void Source(String path)
         {
             if (path != null)
-            {
-                mediaPath = path;
                 media.Source = new Uri(path, UriKind.RelativeOrAbsolute);
-                //files[mediaActualFile],
-            }
+        }
+
+        public String getSource()
+        {
+            if (media.Source != null)
+                return media.Source.AbsoluteUri;
+            return null;
         }
 
         internal void Play()
         {
             if (media.Source != null)
+            {
+                timer.Start();
+                mediaPlayerIsPlaying = true;
                 media.Play();
+            }
         }
 
 
         internal void Pause()
         {
             if (media.Source != null)
+            {
+                timer.Stop();
+                mediaPlayerIsPlaying = false;
                 media.Pause();
+            }
         }
 
         internal void Stop()
         {
-            if (media.Source != null)
-            {
-                mediaTime = 0;
+                mediaPlayerIsPlaying = false;
                 timeSlider.Value = 0;
+                timeSlider.Maximum = 0;
+                currentTimeTextBlock.Text = "00:00:00";
                 media.Source = null;
+                timer.Stop();
                 media.Stop();
-            }
-        }
-
-        private void Element_Mediaopened(object sender, RoutedEventArgs e)
-        {
-            Play();
-            timeSlider.Maximum = media.NaturalDuration.TimeSpan.TotalMilliseconds;
-            mediaTime = (int)media.NaturalDuration.TimeSpan.TotalMilliseconds;
-            mediaActualPos = (int)media.Position.TotalMilliseconds;
         }
 
         private void Element_Mediaended(object sender, RoutedEventArgs e)
         {
+            String mediaPath = ((media.Source != null) ? media.Source.AbsoluteUri : null);
 
-            Stop();
-            if (files != null && files.Length > mediaActualFile + 1)
+            if (!mediaPath.EndsWith(".jpg") && !mediaPath.EndsWith(".png")
+                && !mediaPath.EndsWith(".ico") && !mediaPath.EndsWith(".jpeg")
+                && !mediaPath.EndsWith(".bmp"))
             {
-                mediaActualFile++;
-                media.Source = new Uri(files[mediaActualFile]);
+                Stop();
+            }
+        }
+
+        private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            userIsDraggingSlider = true;
+        }
+
+        private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            userIsDraggingSlider = false;
+            media.Position = TimeSpan.FromSeconds(timeSlider.Value);
+        }
+
+        private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (mediaPlayerIsPlaying)
+                currentTimeTextBlock.Text = TimeSpan.FromSeconds(timeSlider.Value).ToString(@"hh\:mm\:ss");
+        }
+
+        private void ProgressBar(object sender, MouseWheelEventArgs e)
+        {
+            if (mediaPlayerIsPlaying)
+            {
+                timeSlider.Value += (e.Delta > 0) ? 1 : -1;
+                media.Position = TimeSpan.FromSeconds(timeSlider.Value);
+                currentTimeTextBlock.Text = TimeSpan.FromSeconds(timeSlider.Value).ToString(@"hh\:mm\:ss");
+            }
+        }
+
+        private void VolumeBar(object sender, MouseWheelEventArgs e)
+        {
+            media.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+        }
+
+        private void clickControl(object sender, MouseButtonEventArgs e)
+        {
+            if (mediaPlayerIsPlaying)
+                Pause();
+            else if (media != null)
                 Play();
-            }
         }
 
-        private void MediaTimeChanged(object sender, RoutedEventArgs e)
+        private void mouseEventEnter(object sender, MouseEventArgs e)
         {
-            TimeSpan time = new TimeSpan(0, 0, 0, 0, (int)timeSlider.Value);
-            media.Position = time;
-            mediaActualPos = (int)media.Position.TotalMilliseconds;
+            this.navBar.Opacity = 0.8;
         }
 
-        private void Window_ContentRendered(object sender, EventArgs e)
+        public void setNavBar(Boolean isFullscreen)
         {
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChanged;
-            worker.RunWorkerAsync();
+            if (isFullscreen == true)
+                this.navBar.Opacity = 0;
+            else
+                this.navBar.Opacity = 0.8;
+            this.isFullscreen = isFullscreen;
         }
 
-        void worker_DoWork(object sender, DoWorkEventArgs e)
+        private void mouseEventLeave(object sender, MouseEventArgs e)
         {
-            int i;
-
-            while (true)
-            {
-                if (this.media != null && mediaTime != 0)
-                {
-                    i = mediaActualPos / mediaTime * 100;
-                    if (i <= 0)
-                        i = 1;
-                    while (i < 100 && mediaTime > 0)
-                    {
-                        if (i == 1)
-                            (sender as BackgroundWorker).ReportProgress(i);
-                        else
-                            (sender as BackgroundWorker).ReportProgress(i);
-                        Thread.Sleep((this.mediaTime) / 100);
-                        i++;
-                    }
-                    if (mediaTime < 0)
-                        (sender as BackgroundWorker).ReportProgress(0);
-                    this.mediaTime = 0;
-                }
-            }
-
-
-        }
-
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            Progress.Value = e.ProgressPercentage;
+            if (isFullscreen)
+                this.navBar.Opacity = 0;
         }
     }
 }

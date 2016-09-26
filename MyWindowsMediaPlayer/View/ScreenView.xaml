@@ -3,27 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="250" Width="720">
-    <Grid Margin="0,0,0,0">
-        <MediaElement Name="media" HorizontalAlignment="center" VerticalAlignment="Top" LoadedBehavior="Manual" UnloadedBehavior="Stop" MediaOpened="Element_Mediaopened" MediaEnded="Element_Mediaended"/>
+             mc:Ignorable="d" >
+    <UserControl.Resources>
 
-        <ProgressBar Name="Progress" HorizontalAlignment="Left" Height="5" VerticalAlignment="Bottom"  Margin="5,0,0,0" Foreground="White" Background="black" Width="710">
-            <ProgressBar.BorderBrush>
-                <ImageBrush/>
-            </ProgressBar.BorderBrush>
-        </ProgressBar>
-        <Slider Name="timeSlider" ValueChanged="MediaTimeChanged" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0" BorderThickness="0" Height="5" Width="710" BorderBrush="#FFFBAC22" Background="White" RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Opacity="0.5">
-            <Slider.CacheMode>
-                <BitmapCache/>
-            </Slider.CacheMode>
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
-                    <SkewTransform AngleY="0" AngleX="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-    </Grid>
+        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border  BorderThickness="1" BorderBrush="Gray" Background="Gray" Height="2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border SnapsToDevicePixels="True" Background="Black"  BorderThickness="1" BorderBrush="Black" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Ellipse Height="10" Width="10" Fill="Black"></Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="Slider"  TargetType="Slider">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Track Grid.Row="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="Horizontal_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="MinHeight" Value="21" />
+                    <Setter Property="MinWidth" Value="104" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+        <MediaElement Name="media" Grid.Row="1" LoadedBehavior="Manual" MouseWheel="VolumeBar" MouseLeftButtonDown="clickControl" MediaEnded="Element_Mediaended"/>
+
+        <StatusBar x:Name="navBar" Grid.Row="1" Height="50" Opacity="0.8" Background="White" VerticalAlignment="Bottom" Margin="0,0,0,0" MouseEnter="mouseEventEnter" MouseLeave="mouseEventLeave" Cursor="Hand">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem MouseWheel="ProgressBar">
+                    <TextBlock Name="currentTimeTextBlock">00:00:00</TextBlock>
+                </StatusBarItem>
+
+            <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" MouseWheel="ProgressBar">
+                <Slider Style="{StaticResource Horizontal_Slider}" Name="timeSlider" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged"/>
+            </StatusBarItem> 
+            <StatusBarItem Grid.Column="2">
+                <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=media, Path=Volume}" BorderBrush="#FFDDDDDD" FontFamily="Segoe UI" Background="#FFDDDDDD" MouseWheel="VolumeBar"/>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
 </UserControl>

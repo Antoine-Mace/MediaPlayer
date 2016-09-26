@@ -3,12 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="60" Width="720">
-    <Grid Margin="0,0,10,0">
-        <Button Content="Open..." Command="{Binding OpenCommand}" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="75" Background="#FF393939" BorderBrush="#FF393939"/>
-        <Button Content="Play" Command="{Binding PlayCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="223,25,0,0"/>
-        <Button Content="Pause" Command="{Binding PauseCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="303,25,0,0"/>
-        <Button Content="Stop" Command="{Binding StopCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="383,25,0,0"/>
-        <Button Content="Full Screen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="625,25,0,0"/>
+             mc:Ignorable="d" >
+    
+    <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch" Background="White" Height="70">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Margin="0,0,0,0" Command="{Binding OpenCommand}" HorizontalAlignment="Left" VerticalAlignment="center" Grid.Column="1" Background="Transparent">
+            <Button.Foreground>
+                <ImageBrush/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+        		<ImageBrush/>
+        	</Button.BorderBrush>
+            <Image Source="/images/open.png"/>
+        </Button>
+        <UniformGrid Columns="5" Grid.Column="2" Margin="70,0,70,0" VerticalAlignment="center" MaxWidth="600">
+            <Button Command="{Binding PrevCommand}"  Background="Transparent"  VerticalAlignment="center" Grid.Column="3">
+            	<Button.Foreground>
+            		<ImageBrush/>
+            	</Button.Foreground>
+            	<Button.BorderBrush>
+            		<ImageBrush/>
+            	</Button.BorderBrush>
+                <Image Source="/images/prev.png" Margin="0"/>
+            </Button>
+            <Button Command="{Binding PauseCommand}"  Background="Transparent" VerticalAlignment="center" Grid.Column="3">
+            	<Button.Foreground>
+            		<ImageBrush/>
+            	</Button.Foreground>
+            	<Button.BorderBrush>
+            		<ImageBrush/>
+            	</Button.BorderBrush>
+                <Image Source="/images/pause.png"/>
+            </Button>
+            <Button Command="{Binding PlayCommand}"   Background="Transparent" VerticalAlignment="center" Grid.Column="3">
+            	<Button.Foreground>
+            		<ImageBrush/>
+            	</Button.Foreground>
+            	<Button.BorderBrush>
+            		<ImageBrush/>
+            	</Button.BorderBrush>
+                <Button.Content>
+                    <Image Source="/images/play.png" Cursor="Hand" VerticalAlignment="Bottom" Margin="0"/>
+                </Button.Content>
+            </Button>
+            <Button Command="{Binding StopCommand}"  Background="Transparent" VerticalAlignment="center"  Grid.Column="3">
+            	<Button.Foreground>
+            		<ImageBrush/>
+            	</Button.Foreground>
+            	<Button.BorderBrush>
+            		<ImageBrush/>
+            	</Button.BorderBrush>
+                <Image Source="/images/stop.png" Margin="0"/>
+            </Button>
+            <Button Command="{Binding NextCommand}"  Background="Transparent"  VerticalAlignment="center" Grid.Column="3">
+            	<Button.Foreground>
+            		<ImageBrush/>
+            	</Button.Foreground>
+            	<Button.BorderBrush>
+            		<ImageBrush/>
+            	</Button.BorderBrush>
+                <Image Source="/images/next.png" Margin="0"/>
+            </Button>
+        </UniformGrid>
+        <Button HorizontalAlignment="right" VerticalAlignment="center" Grid.Column="3" Command="{Binding FullscreenCommand}" Background="Transparent">
+        	<Button.Foreground>
+        		<ImageBrush/>
+        	</Button.Foreground>
+        	<Button.BorderBrush>
+        		<ImageBrush/>
+        	</Button.BorderBrush>
+            <Image Source="/images/fullscreen.png" Margin="0"/>
+        </Button>
     </Grid>
 </UserControl>

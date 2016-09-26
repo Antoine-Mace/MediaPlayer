@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Playlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <list>
+    <MediaContent>
+      <content_path>F:\Video\SERIE\Z.Nation.S01E01.720p.HDTV.x264-KILLERS.mkv</content_path>
+      <content_name>Z.Nation.S01E01.720p.HDTV.x264-KILLERS</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\SERIE\Z.Nation.S01E05.720p.HDTV.X264-DIMENSION.mkv</content_path>
+      <content_name>Z.Nation.S01E05.720p.HDTV.X264-DIMENSION</content_name>
+    </MediaContent>
+  </list>
+  <name>Znation.xml</name>
+</Playlist>

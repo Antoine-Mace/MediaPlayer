@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Playlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <list>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Kick Ass 2 2013 MULTI 1080p BluRay DTS x264-DMT.mkv</content_path>
+      <content_name>Kick Ass 2 2013 MULTI 1080p BluRay DTS x264-DMT</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\friends-iron.man.3.2013.multi.truefrench.dts-hd.ma.hra-1080p.mkv</content_path>
+      <content_name>friends-iron.man.3.2013.multi.truefrench.dts-hd.ma.hra-1080p</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Gravity.2013.MULTi.1080p.BluRay.x264-ROUGH.mkv</content_path>
+      <content_name>Gravity.2013.MULTi.1080p.BluRay.x264-ROUGH</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\lost-the.wolf.of.wall.street.2013.french.720p.bluray.x264.mkv</content_path>
+      <content_name>lost-the.wolf.of.wall.street.2013.french.720p.bluray.x264</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\insidious.chapter.2.2013.DUAL.1080p.BluRay.x264-XCON.mkv</content_path>
+      <content_name>insidious.chapter.2.2013.DUAL.1080p.BluRay.x264-XCON</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Up4U.Enders.Game.2013.1080p.mkv</content_path>
+      <content_name>Up4U.Enders.Game.2013.1080p</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\The.Internship.2013.UNRATED.FRENCH.SUBFORCED.BRRip.x264.AC3-FUNKY.mkv</content_path>
+      <content_name>The.Internship.2013.UNRATED.FRENCH.SUBFORCED.BRRip.x264.AC3-FUNKY</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\The Mortal Instruments - City of Bones 2013.mkv</content_path>
+      <content_name>The Mortal Instruments - City of Bones 2013</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Fiston.2014.french.DVDRip.x264.AC3-SVR.mkv</content_path>
+      <content_name>Fiston.2014.french.DVDRip.x264.AC3-SVR</content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Escape Plan [1080p] MULTi 2013 BluRay x264-Pop (evasion) .mkv</content_path>
+      <content_name>Escape Plan [1080p] MULTi 2013 BluRay x264-Pop (evasion) </content_name>
+    </MediaContent>
+    <MediaContent>
+      <content_path>F:\Video\FILM\Transcendence.2014.1080p.WEB-DL.DD5.1.H264-RARBG\Transcendence.2014.1080p.WEB-DL.DD5.1.H264-RARBG.mkv</content_path>
+      <content_name>Transcendence.2014.1080p.WEB-DL.DD5.1.H264-RARBG</content_name>
+    </MediaContent>
+  </list>
+  <name>Movie.xml</name>
+</Playlist>
