@@ -1,0 +1,10 @@
+﻿<Window x:Class="MyWindowsMediaPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:View="clr-namespace:MyWindowsMediaPlayer.View"
+        Title="MyWindowsMediaPlayer" Height="Auto" Width="Auto">
+    <Grid>
+        <View:ScreenView x:Name="ScreenView" Margin="0,0,0,39" Background="Black"/>
+        <View:ControlView x:Name="ControlView" Margin="20,368,20,76" Cursor="Hand" Opacity="0.8"/>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="MyWindowsMediaPlayer.View.ScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="250" Width="720">
+    <Grid Margin="0,0,0,0">
+        <MediaElement Name="media" HorizontalAlignment="center" VerticalAlignment="Top" LoadedBehavior="Manual" UnloadedBehavior="Stop" MediaOpened="Element_Mediaopened" MediaEnded="Element_Mediaended"/>
+
+        <ProgressBar Name="Progress" HorizontalAlignment="Left" Height="5" VerticalAlignment="Bottom"  Margin="5,0,0,0" Foreground="White" Background="black" Width="710">
+            <ProgressBar.BorderBrush>
+                <ImageBrush/>
+            </ProgressBar.BorderBrush>
+        </ProgressBar>
+        <Slider Name="timeSlider" ValueChanged="MediaTimeChanged" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0" BorderThickness="0" Height="5" Width="710" BorderBrush="#FFFBAC22" Background="White" RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Opacity="0.5">
+            <Slider.CacheMode>
+                <BitmapCache/>
+            </Slider.CacheMode>
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+    </Grid>
+</UserControl>
