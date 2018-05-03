@@ -8,3 +8,8 @@ Developed few years back in C# language using .NET framework, following MVVM (Mo
 - Listen music
 - View images
 - Create playlist
+
+## License
+
+This project is [MIT licensed](./LICENSE). By contributing you agree that your contributions will be licensed under its
+MIT license.
